@@ -1,0 +1,97 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<html>
+<body>
+<div class="bodyweather" style="text-align:center">
+  <h1>
+    {{title}}
+  </h1>
+
+
+
+  <form #SCform="ngForm" (ngSubmit)="CheckWeather(SCform.value)">
+  <div class="panel primary-panel">
+    <div class="panel-heading">
+      <h2 class="panel-title">Current Weather and Five Day Forecast</h2>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label> State</label>
+        <input type="text" #stateR="ngModel" required minlength="2" maxlength="2" pattern="^[a-zA-Z][a-zA-Z ]+" class="form-control"
+               name="state" ngModel>
+        <div *ngIf="stateR.errors && (stateR.dirty || stateR.touched)" class="alert alert-danger">
+          <div [hidden]="!nameR.errors.pattern">
+            Only alphabets allowed
+          </div>
+          <div [hidden]="!stateR.errors.required">
+            State Code is required
+          </div>
+          <div [hidden]="!stateR.errors.minlength">
+            Please Enter Atleast 2 Characters
+          </div>
+          <div [hidden]="!stateR.errors.maxlength">
+            Please Enter  2 Characters
+          </div>
+
+        </div>
+      </div>
+    </div>]
+    <div class="panel primary-panel">
+      <div class="form-group">
+        <label> City </label>
+        <input #cityR="ngModel" required minlength="2" maxlength="15" pattern="^[a-zA-Z][a-zA-Z ]+" type="text" class="form-control" name="city" ngModel>
+        <div *ngIf="cityR.errors && (cityR.dirty || stateR.touched)">
+
+          <div [hidden]="!cityR.errors.minlength">
+            Please Enter Atleast 2 Characters
+          </div>
+          <div [hidden]="!cityR.errors.maxlength">
+            Maximum length is 15 characters
+          </div>
+          <div [hidden]="!cityR.errors.pattern">
+            Only alphabets allowed
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel primary-panel">
+      <br>
+      <button class="btn btn-primary"> Check</button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="hourlyData">
+  <h4 align="center"> <Strong> Temperature </Strong> : {{ tempData1.current_observation.temperature_string | json }} </h4>
+  <h4 align="center"> <Strong> Wind </Strong> : {{ tempData1.currecurrent_observation.wind_mph | json }} </h4>
+  <h4 align="center"> <strong> Humidity </strong>: {{ tempData1.current_observation.relative_humidity | json }}  </h4>
+  <h4 align="center"> <Strong> Pressure </Strong> : {{ tempData1.current_observation.pressure_mb | json }} </h4>
+</div>
+
+<table *ngIf="hourlyData" class="table" align="right">
+  <thead>
+  <tr style="color:red;">
+    <th scope="h">Hour</th>
+    <th scope="h">Day</th>
+    <th scope="h">High Temperature</th>
+    <th scope="h">Low Temperature</th>
+    <th scope="h">Conditions</th>
+  </tr>
+  </thead>
+   <tbody>
+   <tr *ngFor="let d of [0,1,2,3,4,5]">
+    <td> {{ hourlyData.hourlhourly_forecast[d].FCTTIME.hour | json }}</td>
+    <td> {{ hourlyData.hourly_forecast[d].FCTTIME.pretty | json }}</td>
+    <td> {{ hourlyData.hourly_forecast[d].temp.english | json }} </td>
+    <td> {{ hourlyData.hourly_forecast[d].dewpoint.english | json }} </td>
+    <td> {{ hourlyData.hourly_forecast[d].condition }}  </td>
+   </tr>
+   </tbody>
+  </table>
+<router-outlet></router-outlet>
+</div>
+
+
+</body>
+</html>
