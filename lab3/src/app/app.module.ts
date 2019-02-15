@@ -6,18 +6,34 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NutritionixComponent } from './nutritionix/nutritionix.component';
+import {RouterModule} from '@angular/router';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NutritionixComponent
+    NutritionixComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'Nutritionix',
+        component: NutritionixComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
