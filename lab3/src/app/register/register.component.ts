@@ -25,7 +25,6 @@ export class RegisterComponent implements OnInit {
     if (this.password === this.Cpassword) {
       console.log('passwords match');
     }
-
   }
 
   ngOnInit() {
