@@ -1,4 +1,4 @@
-<form #MyForm="ngForm" (ngSubmit)="loginEvent(MyForm.value)">
+<form #LoginForm="ngForm" (ngSubmit)="loginEvent(LoginForm.value)">
   <div class="panel primary-panel">
     <div class="panel-heading">
       <h2 class="panel-title">Login</h2>
@@ -19,7 +19,7 @@
 
   <div class="panel primary-panel">
     <br>
-    <button class="btn btn-primary"> Check</button>
+    <button class="btn btn-primary">Login</button>
   </div>
 </form>
 

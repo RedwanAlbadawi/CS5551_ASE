@@ -18,8 +18,8 @@ export class NutritionixComponent implements OnInit {
 
     let obs =
       this.http.get('https://api.nutritionix.com/v1_1/search/%22' + this.searchterm +
-       '%22?results=0:1&fields=*&appId=2972d721&appKey=d1a617bbe2e43ec825625373764e27bf');
-      obs.subscribe((response) => console.log(response));
+                    '%22?results=0:1&fields=*&appId=2972d721&appKey=d1a617bbe2e43ec825625373764e27bf');
+    obs.subscribe((response) => console.log(response));
   }
 
   ngOnInit() {
