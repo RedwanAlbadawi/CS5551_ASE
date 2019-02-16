@@ -8,13 +8,21 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   constructor() {}
+  private username;
+  private password;
 
   ngOnInit() {
   }
 
-  loginEvent(event) {
-    event.preventDefault();
-    console.log(event);
+  loginEvent(value: any) {
+    this.username = value.username.toString();
+    this.password = value.password.toString();
+
+    // think we need a shared service here
+
+    console.log(this.username);
+    console.log(this.password);
+
   }
 
 }

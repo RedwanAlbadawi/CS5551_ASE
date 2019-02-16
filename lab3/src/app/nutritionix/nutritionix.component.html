@@ -8,10 +8,23 @@
     <a routerLink="/register">Register</a>
   </div>
 </div>
-<h5>Nutritionix Component</h5>
 
 
-<form>
-  <input type="text" placeholder="Search">
-  <button (click)="SubmitEvent()">Submit</button>
+<form #NForm="ngForm" (ngSubmit)="SubmitEvent(NForm.value)">
+  <div class="panel primary-panel">
+    <div class="panel-heading">
+      <h2 class="panel-title">Nutrition Information</h2>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label>Search Term:</label>
+        <input type="text" required class="form-control" name="searchterm" ngModel>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel primary-panel">
+    <br>
+    <button class="btn btn-primary">Get Info</button>
+  </div>
 </form>

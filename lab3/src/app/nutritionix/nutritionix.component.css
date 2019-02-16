@@ -1,2 +1,7 @@
-
-
+.form-control{
+  width: 400px;
+  padding: 4px;
+  border: 1px groove black;
+  margin: 0;
+  border-radius: 7px;
+}
