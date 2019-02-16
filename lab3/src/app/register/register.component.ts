@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.password);
     console.log(this.Cpassword);
 
-    if (this.password === this.Cpassword) {
+    if (this.password === this.Cpassword && this.Cpassword !== '') {
       console.log('passwords match');
     }
   }
