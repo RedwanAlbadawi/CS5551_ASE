@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
   private username;
   private password;
 
@@ -18,13 +19,12 @@ export class LoginComponent implements OnInit {
     this.username = value.username.toString();
     this.password = value.password.toString();
 
-    // think we need a shared service here
-
     console.log(this.username);
     console.log(this.password);
 
     if (this.username === 'test' && this.password === 'test') {
-    console.log('it works');
+      this.authService.loginUserStatus();
+      console.log(this.authService);
     }
 
   }

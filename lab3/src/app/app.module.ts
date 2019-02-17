@@ -8,7 +8,8 @@ import { RegisterComponent } from './register/register.component';
 import { NutritionixComponent } from './nutritionix/nutritionix.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-
+import {AppGuardGuard} from './app-guard.guard';
+import {AuthService} from './auth.service';
 
 @NgModule({
   declarations: [
@@ -33,11 +34,12 @@ import {HttpClientModule} from '@angular/common/http';
       },
       {
         path: 'Nutritionix',
-        component: NutritionixComponent
+        component: NutritionixComponent,
+        canActivate: [AppGuardGuard]
       }
     ])
   ],
-  providers: [],
+  providers: [AuthService, AppGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

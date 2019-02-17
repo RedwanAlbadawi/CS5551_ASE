@@ -5,6 +5,18 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  constructor() {}
-  
+  private loginStatus;
+  private username;
+
+  constructor() {
+    this.loginStatus = false;
+  }
+
+  loginUserStatus() {
+    this.loginStatus = true;
+  }
+
+  getStatusLogin() {
+    return this.loginStatus;
+  }
 }
