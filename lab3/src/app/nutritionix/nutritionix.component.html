@@ -29,14 +29,7 @@
   </div>
 </form>
 
-{{searchterm}}
-<table>
-  <tr>
-    <th>Calories</th>
-    <th>Serving Weight</th>
-  </tr>
-  <tr>
-    <td>{{calories}}<td>
-    <td>{{sWeight}}</td>
-  </tr>
-</table>
+<div *ngIf="data">
+Calories: {{data.hits[0].fields.nf_calories}} cals<br>
+Weight: {{data.hits[0].fields.nf_serving_weight_grams}} grams
+</div>
