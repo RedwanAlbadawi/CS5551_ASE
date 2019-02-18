@@ -9,8 +9,8 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
-  private username;
-  private password;
+  private username = '';
+  private password = '';
 
   ngOnInit() {
   }
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     console.log(this.username);
     console.log(this.password);
 
-    if (this.username === 'test' && this.password === 'test') {
+    if (this.username !== '' && this.password !== '') {
       this.authService.loginUserStatus();
       console.log(this.authService);
     }
