@@ -12,14 +12,14 @@
 <div class="panel primary-panel">
   <div class="form-group">
     <label>Password:</label>
-    <input required type="text" class="form-control" name="password" ngModel>
+    <input required type="password" class="form-control" name="password" ngModel>
   </div>
 </div>
 
 <div class="panel primary-panel">
   <div class="form-group">
     <label>Confirm Password:</label>
-    <input required type="text" class="form-control" name="Cpassword" ngModel>
+    <input required type="password" class="form-control" name="Cpassword" ngModel>
   </div>
 </div>
 
@@ -29,6 +29,9 @@
 </div>
 </div>
 </form>
+
+<div *ngFor="let login of logins">{{ login }}</div>
+
 
 
 <h5>Existing User? <a routerLink="/login">Login</a><br></h5>

@@ -6,9 +6,12 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   private loginStatus;
-  private username;
 
   constructor() {
+    this.loginStatus = false;
+  }
+
+  logoutUserStatus() {
     this.loginStatus = false;
   }
 
