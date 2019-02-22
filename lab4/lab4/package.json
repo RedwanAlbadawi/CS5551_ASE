@@ -1,5 +1,5 @@
 {
-  "name": "lab4",
+  "name": "app4",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -13,7 +13,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "lint": "ng lint",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -67,5 +67,12 @@
     "tslint": "~5.12.0",
     "typescript": "~3.1.6"
   },
-  "description": "An Ionic project"
+  "description": "App4: An Ionic project",
+  "cordovaPlugins": [
+    "cordova-plugin-whitelist",
+    "cordova-plugin-device",
+    "cordova-plugin-splashscreen",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": []
 }
