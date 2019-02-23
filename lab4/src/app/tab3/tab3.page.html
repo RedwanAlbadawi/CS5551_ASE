@@ -6,4 +6,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content padding>
+    <ion-item>
+      <ion-label>Places</ion-label>
+      <ion-input type="text" #places></ion-input>
+    </ion-item>
+
+  <div padding>
+    <ion-button (click)="seePlaces()" class="button button-block button-positive">
+      Submit
+    </ion-button>
+  </div>
+
+</ion-content>
