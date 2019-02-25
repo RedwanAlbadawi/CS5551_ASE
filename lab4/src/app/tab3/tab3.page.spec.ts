@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Tab3Page } from './tab3.page';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('Tab3Page', () => {
   let component: Tab3Page;
@@ -9,6 +10,7 @@ describe('Tab3Page', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [Tab3Page],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
