@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Search Term</ion-label>
+    <ion-input type="text" #searchTerm></ion-input>
+  </ion-item>
+
+  <div padding>
+    <button ion-button (click)="searchTerms()" class="button button-block button-positive">
+      Submit
+    </button>
+  </div>
+
+  <div class="content" *ngIf="data" padding>
+    {{data.itemListElement[0].result.description}}<br><br>
+    {{data.itemListElement[0].result.detailedDescription.articleBody}}
+  </div>
+
+</ion-content>
