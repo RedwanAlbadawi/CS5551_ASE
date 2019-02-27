@@ -43,8 +43,7 @@ const firebaseConfig = {
     HttpClientModule,
     HttpClientJsonpModule,
     AngularFireDatabaseModule,
-    AngularFireModule,
-    AngularFireAuth
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,7 +56,8 @@ const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AngularFireAuth
   ]
 })
 export class AppModule {}
