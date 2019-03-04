@@ -9,6 +9,7 @@ import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 import { MyApp } from './app.component';
 
@@ -29,6 +30,7 @@ const firebaseConfig = {
 };
 
 
+// @ts-ignore
 @NgModule({
   declarations: [
     MyApp,
@@ -43,7 +45,7 @@ const firebaseConfig = {
     HttpClientModule,
     HttpClientJsonpModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,6 +58,7 @@ const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    SpeechRecognition,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuth
   ]

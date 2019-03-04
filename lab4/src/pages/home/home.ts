@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-// import { AlertController} from "ionic-angular";
 import { ViewChild } from "@angular/core";
-import { NavController} from "ionic-angular";
+import { NavController } from "ionic-angular";
 import { ContactPage } from "../contact/contact";
 import {AngularFireAuth} from 'angularfire2/auth';
 
@@ -13,44 +12,28 @@ export class HomePage {
 
   @ViewChild('username') username;
   @ViewChild('password') password;
-  // alert: any;
-
-  // constructor (public alertCon: AlertController) {}
+  alert = '';
 
   constructor(public navCtrl: NavController, private firebaseauth: AngularFireAuth) {}
 
   async loginUser() {
+    this.alert = '';
     console.log(this.username.value);
     console.log(this.password.value);
 
-    try {
-      this.firebaseauth.auth.signInWithEmailAndPassword(this.username.value, this.password.value).then(() => {
-        this.navCtrl.push(ContactPage);
-      }).catch(()=>{
-        alert("Try again. Invalid Credentials");
-      })
-    }
-    catch(e){
-      console.error(e);
-    }
-
-/*    if (this.username.value === 'admin' && this.password.value === 'admin') {
-      console.log('admin');
-
-      this.alert = await this.alertCon.create({
-        title: 'Login Successful',
-        message: this.username.value + ' has been logged in.',
-        buttons: ['Ok']
-      });
-
+    if (this.username.value !== '' && this.password.value !== '') {
+      try {
+        this.firebaseauth.auth.signInWithEmailAndPassword(this.username.value, this.password.value).then(() => {
+          this.navCtrl.push(ContactPage);
+        }).catch(() => {
+          this.alert = "Try again. Invalid Credentials";
+        })
+      } catch (e) {
+        console.error(e);
+      }
     }
     else {
-      this.alert = await this.alertCon.create({
-        title: 'Login Failed',
-        message: 'Unable to login user.',
-        buttons: ['Ok']
-      });
+      this.alert = "Email and Password required"
     }
-    this.alert.present();*/
-}
+  }
 }

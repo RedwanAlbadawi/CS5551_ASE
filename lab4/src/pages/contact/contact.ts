@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewChild } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 @Component({
   selector: 'page-contact',
@@ -12,7 +13,7 @@ export class ContactPage {
   data: any;
   data1: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private speech: SpeechRecognition, public http: HttpClient) {}
 
   searchTerms() {
 
@@ -33,6 +34,12 @@ export class ContactPage {
       });
 
 
+  }
+
+  async isSpeechSupported():Promise<boolean> {
+    const isAvail = await this.speech.isRecognitionAvailable();
+    console.log(isAvail);
+    return isAvail;
   }
 
 }

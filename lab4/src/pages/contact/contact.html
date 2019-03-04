@@ -18,6 +18,12 @@
     </button>
   </div>
 
+  <div padding>
+    <button ion-button (click)="isSpeechSupported()" class="button button-block button-positive">
+      Is Speech Supported?
+    </button>
+  </div>
+
   <div class="content" *ngIf="data" padding>
     {{data.itemListElement[0].result.description}}<br><br>
     {{data.itemListElement[0].result.detailedDescription.articleBody}}
