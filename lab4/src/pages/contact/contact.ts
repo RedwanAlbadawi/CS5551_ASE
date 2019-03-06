@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ViewChild } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
+import { AngularFireDatabase } from  'angularfire2/database'
 
 @Component({
   selector: 'page-contact',
@@ -12,8 +13,10 @@ export class ContactPage {
   @ViewChild('searchTerm') searchTerm;
   data: any;
   data1: any;
+  searches: any[];
 
-  constructor(private speech: SpeechRecognition, public http: HttpClient) {}
+  constructor(private speech: SpeechRecognition, public http: HttpClient, public db:AngularFireDatabase) {}
+
 
   searchTerms() {
 
@@ -33,7 +36,7 @@ export class ContactPage {
         console.log(data1);
       });
 
-
+    this.db.list('/search').push(this.searchTerm.value);
   }
 
   async isSpeechSupported():Promise<boolean> {
@@ -42,4 +45,7 @@ export class ContactPage {
     return isAvail;
   }
 
+  lastSearch() {
+    console.log(this.db.list('/search'));
+  }
 }
