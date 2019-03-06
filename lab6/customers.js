@@ -43,8 +43,12 @@ var logCustomer = (customer) => {
   console.log(`Last Name: ${customer.lname}`);
   console.log(`Email: ${customer.email}`);
 };
-  
+
+var getAll = () => {
+    return fetchCustomers();
+};
+ 
   
 module.exports = {
-  addCustomer, logCustomer
+  addCustomer, getAll, logCustomer
 };

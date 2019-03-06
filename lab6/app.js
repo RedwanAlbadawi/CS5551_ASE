@@ -50,7 +50,23 @@ if (command === 'add'){
       customers.logCustomer(customer);                //add a new note
     } 
 }
-	
+
+else if (command === 'list') {
+  var AllCustomers = customers.getAll();
+  console.log(`Printing ${AllCustomers.length} customers.`);
+  AllCustomers.forEach((customer)=>{                                //list all note(s)
+    customers.logCustomer(customer);
+  });
+}
+
+else if (command === 'delete') {
+	console.log(`Deleting Customers placeholder.`);
+}
+
+else if (command === 'update') {
+	console.log(`Updating Customers placeholder.`);
+}
+
 else{
   console.log('command note recognized'); 
 }
