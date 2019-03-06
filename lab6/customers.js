@@ -4,7 +4,7 @@ const fs =  require('fs');
 // ------------------Begin of Reusable functions ---------------------
 
 var fetchCustomers = () => {
-  try {                          //if file won't exist
+  try { //if file won't exist
     var customerString = fs.readFileSync('customer-data.json')
     return JSON.parse(customerString);
   } catch(e){
@@ -47,8 +47,13 @@ var logCustomer = (customer) => {
 var getAll = () => {
     return fetchCustomers();
 };
- 
+
+var removeCustomer = () => {
+	var customers = fetchCustomers();
+	customers.pop();
+	saveCustomers(customers);
+}
   
 module.exports = {
-  addCustomer, getAll, logCustomer
+  addCustomer, getAll, removeCustomer, logCustomer
 };

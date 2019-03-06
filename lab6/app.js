@@ -36,6 +36,8 @@ const argv =  yargs
 	  lname: lastOptions,
 	  email: emailOptions
     })
+	.command('list','List all customers')
+	.command('remove', 'Remove last customer')
     .help()
     .argv;
 	
@@ -47,20 +49,20 @@ var command = argv._[0];
 if (command === 'add'){
     var customer = customers.addCustomer(argv.id,argv.fname,argv.lname,argv.email);
     if (customer){
-      customers.logCustomer(customer);                //add a new note
+      customers.logCustomer(customer);
     } 
 }
 
 else if (command === 'list') {
   var AllCustomers = customers.getAll();
   console.log(`Printing ${AllCustomers.length} customers.`);
-  AllCustomers.forEach((customer)=>{                                //list all note(s)
+  AllCustomers.forEach((customer)=>{
     customers.logCustomer(customer);
   });
 }
 
-else if (command === 'delete') {
-	console.log(`Deleting Customers placeholder.`);
+else if (command === 'remove') {
+	customers.removeCustomer();
 }
 
 else if (command === 'update') {
@@ -68,5 +70,5 @@ else if (command === 'update') {
 }
 
 else{
-  console.log('command note recognized'); 
+  console.log('command not recognized'); 
 }
