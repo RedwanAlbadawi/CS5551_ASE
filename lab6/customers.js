@@ -36,7 +36,7 @@ var addCustomer = (id,fname,lname,email) => {
 	}
  };
   
-var logCustomer = (customer) => { 
+var logCustomer = (customer) => {
   console.log('--');
   console.log(`ID: ${customer.id}`);
   console.log(`First Name: ${customer.fname}`);
@@ -48,9 +48,9 @@ var getAll = () => {
     return fetchCustomers();
 };
 
-var removeCustomer = () => {
+var removeCustomer = (pos) => {
 	var customers = fetchCustomers();
-	customers.pop();
+	customers.splice(pos, 1);
 	saveCustomers(customers);
 }
   

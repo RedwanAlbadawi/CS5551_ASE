@@ -28,6 +28,12 @@ const emailOptions = {
     alias : 'e'
 }
 
+const posOptions = {
+	descrive: 'Position of customer in array',
+	demand : true,
+	alias : 'p'		
+}
+
 const argv =  yargs
 
     .command('add','Add a new customer',{
@@ -37,7 +43,9 @@ const argv =  yargs
 	  email: emailOptions
     })
 	.command('list','List all customers')
-	.command('remove', 'Remove last customer')
+	.command('remove', 'Remove last customer',{
+		pos: posOptions
+	})
     .help()
     .argv;
 	
@@ -62,7 +70,7 @@ else if (command === 'list') {
 }
 
 else if (command === 'remove') {
-	customers.removeCustomer();
+	customers.removeCustomer(argv.pos);
 }
 
 else if (command === 'update') {
