@@ -17,7 +17,6 @@ export class ContactPage {
 
   constructor(private speech: SpeechRecognition, public http: HttpClient, public db:AngularFireDatabase) {}
 
-
   searchTerms() {
 
     console.log(this.searchTerm.value);
@@ -27,7 +26,6 @@ export class ContactPage {
             this.data = data;
           console.log(data);
         });
-
 
     this.http.jsonp('https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyBD9PHtfL3lttjadyonL2t4NsRg0L6qPMo', 'callback')
       .subscribe(data1 => {
