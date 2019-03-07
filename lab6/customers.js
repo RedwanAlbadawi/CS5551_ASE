@@ -26,13 +26,14 @@ var addCustomer = (id,fname,lname,email) => {
 		return customer.id === id;
 		return customer.fname === fname;
 		return customer.lname === lname;
+        return customer.email === email;
 	});
 	if (duplicateCustomers.length === 0){
       customers.push(customer);
       saveCustomers(customers);
       return customer
 	} else {
-		console.log(`Customer ${customer.fname} ${customer.lname} - ID:${customer.id} already exists!`);
+		console.log(`Customer ID:${customer.id} already exists!`);
 	}
  };
   
