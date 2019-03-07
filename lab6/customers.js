@@ -56,8 +56,8 @@ var removeCustomer = (pos) => {
 
 // var findCustomer = (key, val) => {
 //	var customers = fetchCustomers();
-//	customers.filter(function(key)
-//		return key.va
+//	customers.filter(function(customer)
+//		return customer.key == value;
 //}
   
 module.exports = {
