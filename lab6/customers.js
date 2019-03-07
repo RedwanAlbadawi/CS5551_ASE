@@ -53,6 +53,12 @@ var removeCustomer = (pos) => {
 	customers.splice(pos, 1);
 	saveCustomers(customers);
 }
+
+// var findCustomer = (key, val) => {
+//	var customers = fetchCustomers();
+//	customers.filter(function(key)
+//		return key.va
+//}
   
 module.exports = {
   addCustomer, getAll, removeCustomer, logCustomer

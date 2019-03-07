@@ -34,6 +34,19 @@ const posOptions = {
 	alias : 'p'		
 }
 
+const keyOptions = {
+	descrive: 'Attribute Key',
+	demand : true,
+	alias : 'k'		
+}
+
+const valOptions = {
+	descrive: 'Value to find',
+	demand : true,
+	alias : 'v'		
+}
+
+
 const argv =  yargs
 
     .command('add','Add a new customer',{
@@ -45,6 +58,10 @@ const argv =  yargs
 	.command('list','List all customers')
 	.command('remove', 'Remove last customer',{
 		pos: posOptions
+	})
+	.command('Find', 'Find customer by key', {
+		key: keyOptions,
+		value: valOptions
 	})
     .help()
     .argv;
@@ -76,6 +93,10 @@ else if (command === 'remove') {
 else if (command === 'update') {
 	console.log(`Updating Customers placeholder.`);
 }
+
+else if (command === 'find') {
+	console.log('find');		
+}	
 
 else{
   console.log('command not recognized'); 
