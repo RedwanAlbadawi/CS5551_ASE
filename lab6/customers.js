@@ -1,9 +1,8 @@
 const fs =  require('fs');
 const _ = require('lodash');
-
-
-// ------------------Begin of Reusable functions ---------------------
-
+//--------------------------------------------------------------
+//Parse through customer-data.json file
+//--------------------------------------------------------------
 var fetchCustomers = () => {
   try { //if file won't exist
     var customerString = fs.readFileSync('customer-data.json')
@@ -12,21 +11,23 @@ var fetchCustomers = () => {
     return [];
   }
 };
-
+//--------------------------------------------------------------
+// Update customer-data.json file
+//--------------------------------------------------------------
 var saveCustomers = (customer) => {
   fs.writeFileSync('customer-data.json',JSON.stringify(customer));
 };
-
-//  to add a new note
-
-var addCustomer = (id,fname,lname,email) => {   
+//--------------------------------------------------------------
+// Adding a new customer
+//--------------------------------------------------------------
+var addCustomer = (id,firstName,lastName,email) => {
     var customers = fetchCustomers();
-    var customer = {id,fname,lname,email};
+    var customer = {id,firstName,lastName,email};
 	
 	var duplicateCustomers =  customers.filter((customer) => {
 		return customer.id === id;
-		return customer.fname === fname;
-		return customer.lname === lname;
+		return customer.firstName === firstName;
+		return customer.lastName === lastName;
         return customer.email === email;
 	});
 	if (duplicateCustomers.length === 0){
@@ -37,41 +38,52 @@ var addCustomer = (id,fname,lname,email) => {
 		console.log(`Customer ID:${customer.id} already exists!`);
 	}
  };
-  
+//--------------------------------------------------------------
+// Log customer details to console
+//--------------------------------------------------------------
 var logCustomer = (customer) => {
   console.log('--');
   console.log(`ID: ${customer.id}`);
-  console.log(`First Name: ${customer.fname}`);
-  console.log(`Last Name: ${customer.lname}`);
+  console.log(`First Name: ${customer.firstName}`);
+  console.log(`Last Name: ${customer.lastName}`);
   console.log(`Email: ${customer.email}`);
 };
-
+//--------------------------------------------------------------
+// Get all customers using fetchCustomers
+//--------------------------------------------------------------
 var getAll = () => {
     return fetchCustomers();
 };
-
+//--------------------------------------------------------------
+// Remove a customer by detail [id, first name, last name, email] and attribute
+//--------------------------------------------------------------
 var removeCustomer = (det,val) => {
 	var customers = fetchCustomers();
+	var updtCustomers = '';
+
 	if (det === "id") {
-        var updtCustomers = customers.filter((customer) => customer.id !== val);
+        updtCustomers = customers.filter((customer) => customer.id !== val);
         saveCustomers(updtCustomers);
     }
-    else if (det === "fname") {
-        var updtCustomers = customers.filter((customer) => customer.fname !== val);
+    else if (det === "first") {
+        updtCustomers = customers.filter((customer) => customer.firstName !== val);
         saveCustomers(updtCustomers);
     }
-    else if (det === "lname") {
-        var updtCustomers = customers.filter((customer) => customer.lname !== val);
+    else if (det === "last") {
+        updtCustomers = customers.filter((customer) => customer.lastName !== val);
         saveCustomers(updtCustomers);
     }
     else if (det === "email") {
-        var updtCustomers = customers.filter((customer) => customer.email !== val);
+        updtCustomers = customers.filter((customer) => customer.email !== val);
         saveCustomers(updtCustomers);
     }
 	else
-	    console.log('Detail must be id, fname, lname, or e')
-};
+	    console.log('Detail must be id, first, last, or e')
 
+    return customers.length === updtCustomers.length;
+
+};
+//--------------------------------------------------------------
 module.exports = {
   addCustomer, getAll, removeCustomer, logCustomer
 };
