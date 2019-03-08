@@ -13,13 +13,13 @@ const idOptions = {
 const firstOptions = {
     describe: 'First Name',
     demand : true,
-    alias : 'fn'
+    alias : 'f'
 }
 
 const lastOptions = {
     describe: 'Last Name',
     demand : true,
-    alias : 'ln'
+    alias : 'l'
 }
 
 const emailOptions = {
@@ -28,22 +28,16 @@ const emailOptions = {
     alias : 'e'
 }
 
-const posOptions = {
-	descrive: 'Position of customer in array',
-	demand : true,
-	alias : 'p'		
-}
-
-const keyOptions = {
-	descrive: 'Attribute Key',
-	demand : true,
-	alias : 'k'		
+const detOptions = {
+    describe: 'Customer detail to delete by value',
+    demand : true,
+    alias : 'd'
 }
 
 const valOptions = {
-	descrive: 'Value to find',
-	demand : true,
-	alias : 'v'		
+    describe: 'Customer Value to delete by',
+    demand: true,
+    alias: 'v'
 }
 
 
@@ -57,12 +51,9 @@ const argv =  yargs
     })
 	.command('list','List all customers')
 	.command('remove', 'Remove last customer',{
-		pos: posOptions
-	})
-	.command('Find', 'Find customer by key', {
-		key: keyOptions,
-		value: valOptions
-	})
+        custDetail: detOptions,
+		custValue: valOptions
+    })
     .help()
     .argv;
 	
@@ -87,16 +78,13 @@ else if (command === 'list') {
 }
 
 else if (command === 'remove') {
-	customers.removeCustomer(argv.pos);
+	customers.removeCustomer(argv.custDetail,argv.custValue);
 }
 
 else if (command === 'update') {
-	console.log(`Updating Customers placeholder.`);
+    console.log(`Updating Customers placeholder.`);
 }
 
-else if (command === 'find') {
-	console.log('find');		
-}	
 
 else{
   console.log('command not recognized'); 

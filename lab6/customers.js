@@ -1,4 +1,5 @@
 const fs =  require('fs');
+const _ = require('lodash');
 
 
 // ------------------Begin of Reusable functions ---------------------
@@ -20,7 +21,7 @@ var saveCustomers = (customer) => {
 
 var addCustomer = (id,fname,lname,email) => {   
     var customers = fetchCustomers();
-    var customer = {id,fname,lname,email}
+    var customer = {id,fname,lname,email};
 	
 	var duplicateCustomers =  customers.filter((customer) => {
 		return customer.id === id;
@@ -49,18 +50,28 @@ var getAll = () => {
     return fetchCustomers();
 };
 
-var removeCustomer = (pos) => {
+var removeCustomer = (det,val) => {
 	var customers = fetchCustomers();
-	customers.splice(pos, 1);
-	saveCustomers(customers);
-}
+	if (det === "id") {
+        var updtCustomers = customers.filter((customer) => customer.id !== val);
+        saveCustomers(updtCustomers);
+    }
+    else if (det === "fname") {
+        var updtCustomers = customers.filter((customer) => customer.fname !== val);
+        saveCustomers(updtCustomers);
+    }
+    else if (det === "lname") {
+        var updtCustomers = customers.filter((customer) => customer.lname !== val);
+        saveCustomers(updtCustomers);
+    }
+    else if (det === "email") {
+        var updtCustomers = customers.filter((customer) => customer.email !== val);
+        saveCustomers(updtCustomers);
+    }
+	else
+	    console.log('Detail must be id, fname, lname, or e')
+};
 
-// var findCustomer = (key, val) => {
-//	var customers = fetchCustomers();
-//	customers.filter(function(customer)
-//		return customer.key == value;
-//}
-  
 module.exports = {
   addCustomer, getAll, removeCustomer, logCustomer
 };
