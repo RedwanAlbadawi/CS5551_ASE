@@ -83,7 +83,48 @@ var removeCustomer = (det,val) => {
     return customers.length === updtCustomers.length;
 
 };
+
+//--------------------------------------------------------------
+// update a customer by detail [id] and attribute
+//--------------------------------------------------------------
+
+var modifyCustomer = (idd,val1,det,val) => {
+    var customers = fetchCustomers();
+    var updtCustomers = '';
+
+    if (idd === "id") {
+        var index = customers.findIndex(function (item, i) {
+            return item.name === val1
+        });
+        console.log(index);
+
+
+        if (det === "id") {
+            updtCustomers = customers.filter((customer) => customer[index].id = val);
+            saveCustomers(updtCustomers);
+        }
+        else if (det === "first") {
+            updtCustomers = customers.filter((customer) => customer[index].firstName = val);
+            saveCustomers(updtCustomers);
+        }
+        else if (det === "last") {
+            updtCustomers = customers.filter((customer) => customer[index].lasttName = val);
+            saveCustomers(updtCustomers);
+        }
+        else if (det === "email") {
+            updtCustomers = customers.filter((customer) => customer[index].email = val);
+            saveCustomers(updtCustomers);
+        }
+
+        console.log(index);
+        saveCustomers(updtCustomers);
+        return customers.length === updtCustomers.length;
+    }
+}
+
+
 //--------------------------------------------------------------
 module.exports = {
-  addCustomer, getAll, removeCustomer, logCustomer
+  addCustomer, getAll, removeCustomer, logCustomer,modifyCustomer
 };
+

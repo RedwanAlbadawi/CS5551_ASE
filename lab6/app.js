@@ -42,6 +42,18 @@ const valueOptions = {
     alias: 'v'
 }
 
+const detailOptions1 = {
+    describe: 'Customer detail to update by value',
+    demand : true,
+    alias : 'd1'
+}
+
+const valueOptions1 = {
+    describe: 'Customer updated Value ',
+    demand: true,
+    alias: 'v1'
+}
+
 const argv =  yargs
 
     .command('add','Add a new customer',{
@@ -51,6 +63,12 @@ const argv =  yargs
 	  email: emailOptions
     })
 	.command('list','List all customers')
+    .command('update', 'update  customer',{
+        detail: detailOptions,
+        value: valueOptions,
+        detail1: detailOptions1,
+        value1: valueOptions1
+    })
 	.command('remove', 'Remove last customer',{
         detail: detailOptions,
 		value: valueOptions
@@ -69,7 +87,7 @@ if (command === 'add'){
     var customer = customers.addCustomer(argv.id,argv.firstName,argv.lastName,argv.email);
     if (customer){
       customers.logCustomer(customer);
-    } 
+    }
 }
 //--------------------------------------------------------------
 //node app.js list
@@ -92,10 +110,13 @@ else if (command === 'remove') {
 	    console.log('Customer has been removed.');
 }
 //--------------------------------------------------------------
-// Placeholder for update function
+// node app.js update --d1 <[id]> --v1 <[attribute of the id]>  -d <[id or first or last or email]> -v <[attribute of the
+// id or first or last or email]>
 //--------------------------------------------------------------
 else if (command === 'update') {
-    console.log(`Updating Customers placeholder.`);
+    var update = customers.modifyCustomer(argv.detail1,argv.value1,argv.detail,argv.value);
+    if (update)
+        console.log(`Updating Customers placeholder.`);
 }
 //--------------------------------------------------------------
 else{
