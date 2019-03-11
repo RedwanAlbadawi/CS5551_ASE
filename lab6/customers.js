@@ -87,41 +87,45 @@ var removeCustomer = (det,val) => {
 //--------------------------------------------------------------
 // update a customer by detail [id] and attribute
 //--------------------------------------------------------------
-
 var modifyCustomer = (idd,val1,det,val) => {
     var customers = fetchCustomers();
-    var updtCustomers = '';
 
     if (idd === "id") {
+
         var index = customers.findIndex(function (item, i) {
-            return item.name === val1
+            return item.id === val1
         });
         console.log(index);
 
+        if(index > -1){
 
-        if (det === "id") {
-            updtCustomers = customers.filter((customer) => customer[index].id = val);
-            saveCustomers(updtCustomers);
-        }
-        else if (det === "first") {
-            updtCustomers = customers.filter((customer) => customer[index].firstName = val);
-            saveCustomers(updtCustomers);
-        }
-        else if (det === "last") {
-            updtCustomers = customers.filter((customer) => customer[index].lasttName = val);
-            saveCustomers(updtCustomers);
-        }
-        else if (det === "email") {
-            updtCustomers = customers.filter((customer) => customer[index].email = val);
-            saveCustomers(updtCustomers);
+            if (det === "id") {
+                customers[index].id = val;
+            }
+            else if (det === "first") {
+                customers[index].firstName = val;
+            }
+            else if (det === "last") {
+                customers[index].lastName = val;
+            }
+            else if (det === "email") {
+                customers[index].email = val;
+            }else {
+                console.log('Detail must be id, first, last, or email');
+                return false;
+            }
+
+            console.log(index);
+            saveCustomers(customers);
+        }else{
+
+            console.log('No Customer available for Id' + index);
+            return false;
         }
 
-        console.log(index);
-        saveCustomers(updtCustomers);
-        return customers.length === updtCustomers.length;
+        return true;
     }
 }
-
 
 //--------------------------------------------------------------
 module.exports = {
