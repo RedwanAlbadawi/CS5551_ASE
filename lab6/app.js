@@ -116,7 +116,10 @@ else if (command === 'remove') {
 else if (command === 'update') {
     var update = customers.modifyCustomer(argv.detail1,argv.value1,argv.detail,argv.value);
     if (update)
-        console.log(`Updating Customers placeholder.`);
+        console.log(`Customer has been updated`);
+    else {
+        console.log(`Unable to update customer`);
+    }
 }
 //--------------------------------------------------------------
 else{

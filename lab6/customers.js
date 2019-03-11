@@ -78,7 +78,7 @@ var removeCustomer = (det,val) => {
         saveCustomers(updtCustomers);
     }
 	else
-	    console.log('Detail must be id, first, last, or e')
+	    console.log('Detail must be id, first, last, or e');
 
     return customers.length === updtCustomers.length;
 
@@ -114,10 +114,9 @@ var modifyCustomer = (idd,val1,det,val) => {
                 console.log('Detail must be id, first, last, or email');
                 return false;
             }
-
-            console.log(index);
             saveCustomers(customers);
-        }else{
+
+        }else {
 
             console.log('No Customer available for Id' + index);
             return false;
