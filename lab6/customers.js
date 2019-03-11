@@ -85,7 +85,7 @@ var removeCustomer = (det,val) => {
 };
 
 //--------------------------------------------------------------
-// update a customer by detail [id] and attribute
+// Update a customer by detail [id] and attribute
 //--------------------------------------------------------------
 var modifyCustomer = (idd,val1,det,val) => {
     var customers = fetchCustomers();

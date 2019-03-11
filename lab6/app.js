@@ -100,7 +100,7 @@ else if (command === 'list') {
   });
 }
 //--------------------------------------------------------------
-//node app.js remove -d <[id, first, last, email]> -a <attribute to delete by>
+//node app.js remove -d <id, first, last, email> -a <attribute to delete by>
 //--------------------------------------------------------------
 else if (command === 'remove') {
 	var deleted = customers.removeCustomer(argv.detail,argv.value);
@@ -110,8 +110,8 @@ else if (command === 'remove') {
 	    console.log('Customer has been removed.');
 }
 //--------------------------------------------------------------
-// node app.js update --d1 <[id]> --v1 <[attribute of the id]>  -d <[id or first or last or email]> -v <[attribute of the
-// id or first or last or email]>
+// node app.js update --d1 <[id]> --v1 <[attribute of the id]>  -d <[id or first or last or email]> -v <[attribute of
+// the id or first or last or email]>
 //--------------------------------------------------------------
 else if (command === 'update') {
     var update = customers.modifyCustomer(argv.detail1,argv.value1,argv.detail,argv.value);
