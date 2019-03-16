@@ -25,7 +25,7 @@ export class BookCreateComponent implements OnInit {
     this.bookForm = this.formBuilder.group({
       'isbn': [null, Validators.required],
       'title': [null, Validators.required],
-      'description': [null, Validators.required],
+      'description': [null, Validators.pattern(/(\(?[0-9]{3}\)?-?\s?[0-9]{3}-?[0-9]{4})/)],
       'author': [null, Validators.required],
       'publisher': [null, Validators.required],
       'published_year': [null, Validators.required]
