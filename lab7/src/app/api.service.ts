@@ -1,20 +1,19 @@
-import {Injectable} from '@angular/core';
-import {Observable, of, throwError} from 'rxjs';
-import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
-import {catchError, tap, map} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { catchError, tap, map } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = '/api';
+const apiUrl = "/api";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -29,34 +28,34 @@ export class ApiService {
     }
     // return an observable with a user-facing error message
     return throwError('Something bad happened; please try again later.');
-  }
+  };
 
   private extractData(res: Response) {
     let body = res;
-    return body || {};
+    return body || { };
   }
 
-  getBooks(): Observable<any> {
+  getCustomers(): Observable<any> {
     return this.http.get(apiUrl, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
-  getBook(id: string): Observable<any> {
+  getCustomer(id: string): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.get(url, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
-  postBook(data): Observable<any> {
+  postCustomer(data): Observable<any> {
     return this.http.post(apiUrl, data, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  updateBook(id: string, data): Observable<any> {
+  updateCustomer(id: string, data): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, data, httpOptions)
       .pipe(
@@ -64,11 +63,12 @@ export class ApiService {
       );
   }
 
-  deleteBook(id: string): Observable<{}> {
+  deleteCustomer(id: string): Observable<{}> {
     const url = `${apiUrl}/${id}`;
     return this.http.delete(url, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
+
 }

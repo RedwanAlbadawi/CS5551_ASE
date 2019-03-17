@@ -1,41 +1,41 @@
 var express = require('express');
 var router = express.Router();
-var Book = require('../models/Book.js');
+var Customer = require('../models/customer.js');
 
-/* GET ALL BOOKS */
+/* GET ALL CUSTOMERS */
 router.get('/', function (req, res, next) {
-  Book.find(function (err, products) {
+  Customer.find(function (err, products) {
     if (err) return next(err);
     res.json(products);
   });
 });
 
-/* GET SINGLE BOOK BY ID */
+/* GET SINGLE CUSTOMER BY ID */
 router.get('/:id', function (req, res, next) {
-  Book.findById(req.params.id, function (err, post) {
+  Customer.findById(req.params.id, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-/* SAVE BOOK */
+/* SAVE CUSTOMER */
 router.post('/', function (req, res, next) {
-  Book.create(req.body, function (err, post) {
+  Customer.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-/* UPDATE BOOK */
+/* UPDATE CUSTOMER */
 router.put('/:id', function(req, res, next){
-  Book.findByIdAndUpdate(req.params.id, req.body, function (err,post){
+  Customer.findByIdAndUpdate(req.params.id, req.body, function (err,post){
     if (err) return next(err);
     res.json(post);
   })
 })
-/* DELETE BOOK */
+/* DELETE CUSTOMER */
 router.delete('/:id', function(req, res, next){
-  Book.findByIdAndDelete(req.params.id, function (err,post){
+  Customer.findByIdAndDelete(req.params.id, function (err,post){
     if (err) return next(err);
     res.json(post);
   })

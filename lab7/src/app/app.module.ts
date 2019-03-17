@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
-import { BookComponent } from './book/book.component';
-import { BookDetailComponent } from './book-detail/book-detail.component';
-import { BookCreateComponent } from './book-create/book-create.component';
-import { BookEditComponent } from './book-edit/book-edit.component';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
+import { CustomerCreateComponent } from './customer-create/customer-create.component';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
@@ -24,27 +24,27 @@ import {
 
 const appRoutes: Routes = [
   {
-    path: 'books',
-    component: BookComponent,
-    data: { title: 'Book List' }
+    path: 'customers',
+    component: CustomerComponent,
+    data: { title: 'Customer List' }
   },
   {
-    path: 'book-details/:id',
-    component: BookDetailComponent,
-    data: { title: 'Book Details' }
+    path: 'customer-details/:id',
+    component: CustomerDetailComponent,
+    data: { title: 'Customer Details' }
   },
   {
-    path: 'book-create',
-    component: BookCreateComponent,
-    data: { title: 'Create Book' }
+    path: 'customer-create',
+    component: CustomerCreateComponent,
+    data: { title: 'Create Customer' }
   },
   {
-    path: 'book-edit/:id',
-    component: BookEditComponent,
-    data: { title: 'Edit Book' }
+    path: 'customer-edit/:id',
+    component: CustomerEditComponent,
+    data: { title: 'Edit Customer' }
   },
   { path: '',
-    redirectTo: '/books',
+    redirectTo: '/customers',
     pathMatch: 'full'
   }
 ];
@@ -52,10 +52,10 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
-    BookDetailComponent,
-    BookCreateComponent,
-    BookEditComponent
+    CustomerComponent,
+    CustomerDetailComponent,
+    CustomerCreateComponent,
+    CustomerEditComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
