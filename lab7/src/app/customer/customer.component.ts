@@ -19,7 +19,7 @@ export class CustomerComponent implements OnInit {
   ngOnInit() {
     this.api.getCustomers()
       .subscribe(res => {
-        console.log(res);
+        console.log('RES' + res);
         this.customers = res;
       }, err => {
         console.log(err);

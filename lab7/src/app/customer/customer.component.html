@@ -9,20 +9,20 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Title Column -->
-    <ng-container matColumnDef="ID">
-      <th mat-header-cell *matHeaderCellDef>Customer ID </th>
+    <!-- ID Column -->
+    <ng-container matColumnDef="customer_id">
+      <th mat-header-cell *matHeaderCellDef>Customer ID</th>
       <td mat-cell *matCellDef="let element" class="id-col"> {{element.customer_id}} </td>
     </ng-container>
 
-    <!-- Title Column -->
-    <ng-container matColumnDef="Name">
+    <!-- Name Column -->
+    <ng-container matColumnDef="customer_name">
       <th mat-header-cell *matHeaderCellDef> Name</th>
       <td mat-cell *matCellDef="let element"> {{element.customer_name}} </td>
     </ng-container>
 
-    <!-- Author Column -->
-    <ng-container matColumnDef="Email">
+    <!-- Email Column -->
+    <ng-container matColumnDef="customer_email">
       <th mat-header-cell *matHeaderCellDef> Email</th>
       <td mat-cell *matCellDef="let element"> {{element.customer_email}} </td>
     </ng-container>
