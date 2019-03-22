@@ -1,0 +1,15 @@
+.login-card {
+  width: 40%;
+  margin: auto;
+}
+
+.login-full-width {
+  width: 90%;
+  margin: auto;
+}
+
+body, html {
+  padding: 15px;
+  height: 100%;
+  background-image:url('/assets/background.jpg');
+}
