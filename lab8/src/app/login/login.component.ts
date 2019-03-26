@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,19 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  username: string;
+  email: string;
   password: string;
-  currentUser: string;
-
 
   ngOnInit() {
   }
 
-  login(): void {
-    if (this.username === 'admin' && this.password === 'admin') {
-      this.currentUser = this.username;
+  login() {
+    if (this.email !== '' && this.password !== '') {
+      this.http.post('http://localhost:3000/api/login', {name: this.email, email: this.password})
+        .subscribe((data: any) => {
+          localStorage.setItem('auth_token', data.token);
+          this.router.navigate(['/home']);
+          console.log(data.token);
+        });
     } else {
       alert('Invalid credentials');
     }
