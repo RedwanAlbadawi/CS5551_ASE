@@ -7,17 +7,17 @@ html
         link(rel='stylesheet', href='/css/bootstrap.min.css')
 
     body
-        form(#loginform='ngForm', (ngsubmit)='loginEvent(LoginForm.value)')
+        form.form(name='lForm')
             .panel.primary-panel
                 .panel-heading
-                    h2.panel-title Login
+                    h2.panel-title Lab 9
                 .panel-body
                     .form-group
                         label Email Address:
-                        input.form-control(type='text', required, name='email', ngmodel='email', placeholder='Email')
+                        input#email.form-control(type='text', required, name='email', ngmodel='email', placeholder='Email')
             .panel.primary-panel
                 .form-group
                     label Password:
-                    input.form-control(required, type='password', name='password', ngmodel='password', placeholder='password')
+                    input#password.form-control(required, type='password', name='password', ngmodel='password', placeholder='password')
             .panel.primary-panel
                 button.btn.btn-primary(type='button', onclick="login()") Login
