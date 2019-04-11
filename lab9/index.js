@@ -21,10 +21,10 @@ app.post('/', function(req, res){
    console.log('email =' + req.body.email);
    console.log('password =' + req.body.password);
    res.cookie('email', req.body).render('home');
-   console.log('out');
+   console.log(req);
 });
 
-app.post('/user', function(req, res){
+app.get('/user', function(req, res){
    console.log(req.cookies);
    console.log('here');
    res.render('user');
