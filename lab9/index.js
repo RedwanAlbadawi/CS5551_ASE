@@ -30,6 +30,6 @@ app.post('/user', function(req, res){
 });
 
 //Listening to nodeJS Application
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
    console.log("Listening to port 3000")
 });
