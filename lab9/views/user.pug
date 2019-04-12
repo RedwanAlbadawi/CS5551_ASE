@@ -7,4 +7,11 @@ html
         link(rel='stylesheet', href='/css/bootstrap.min.css')
 
     body
-        testing
+        h1 User Details
+        table
+            tr
+                th Email
+                th Password
+            tr
+                td #{details.email}
+                td #{details.password}

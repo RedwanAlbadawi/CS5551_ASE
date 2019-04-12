@@ -1,5 +1,6 @@
 var express = require('express');
 var cookieParser = require('cookie-parser');
+
 var app = express();
 var bodyParser = require('body-parser')
 app.use(cookieParser());
@@ -20,14 +21,12 @@ app.get('/', function(req, res){
 app.post('/', function(req, res){
    console.log('email =' + req.body.email);
    console.log('password =' + req.body.password);
-   res.cookie('email', req.body).render('home');
-   console.log(req);
+   res.cookie('cookie', req.body).render('home');
 });
 
-app.get('/user', function(req, res){
-   console.log(req.cookies);
-   console.log('here');
-   res.render('user');
+app.post('/user', function(req, res){
+   console.log('cookie = ' + req.cookies);
+   res.render('user', {details: req.cookies.cookie});
 });
 
 //Listening to nodeJS Application

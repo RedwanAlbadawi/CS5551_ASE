@@ -20,10 +20,42 @@ form {
     font-family: Verdana;
 }
 
+.form {
+    text-align: left;
+    padding: 7px;
+    margin-left: 30%;
+}
+
 .form-group{
     color: white;
     font-weight: 10pt;
 }
 
+h1 {
+    padding: 30px;
+    text-align: center;
+    color: white;
+}
+
+table, th, td {
+    border: 1px solid darkolivegreen;
+}
+
+th {
+    background-color: lightgray;
+    color: darkgreen;
+}
+
+tr {
+    background-color: whitesmoke;
+    color: green;
+}
+
+table {
+    text-align: left;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+}
 
 
