@@ -1,7 +1,8 @@
-import { Component} from '@angular/core';
-// import {NgForm} from '@angular/forms';
-// import {HttpClient} from '@angular/common/http';
+import { Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
 import { Temperature } from './weather.service';
+import { NgModule } from '@angular/core';
 
 
 
@@ -18,21 +19,23 @@ export class AppComponent {
   private city: string;
   private tempData1: any;
   private hourlyData: any;
-  // urlTemp = 'http://api.wunderground.com/api/4bbbc25f4f5946dd/conditions/q/';
-  // urlHourly= 'http://api.wunderground.com/api/36b799dc821d5836/hourly/q/';
+  urlTemp = 'http://api.wunderground.com/api/4bbbc25f4f5946dd/conditions/q/';
+  urlHourly = 'http://api.wunderground.com/api/36b799dc821d5836/hourly/q/';
 
-  constructor( private temp: Temperature) {
+  constructor(private temp: Temperature) {
 
+
+    ngOnInit()
+    {
+      const obs = this.http.get('http://api.wunderground.com/api/4bbbc25f4f5946dd/conditions/q/' + this.state + '/' + this.city + '.json');
+      obs.subscribe(() => console.log('http://api.wunderground.com/api/4bbbc25f4f5946dd/conditions/q/' + this.state + '/'
+        + this.city + '.json'));
+    }
   }
- //  ngOnInit() {
-//    const obs = this.http.get('http://api.wunderground.com/api/4bbbc25f4f5946dd/conditions/q/' + this.state + '/' + this.city + '.json');
-//    obs.subscribe(() => console.log('http://api.wunderground.com/api/4bbbc25f4f5946dd/conditions/q/' + this.state + '/'
-//    + this.city + '.json'));
-//  }
-//  }
-//  CheckWeather(SCform: NgForm): void {
-//    console.log('http://api.wunderground.com/api/4bbbc25f4f5946dd/conditions/q/' + this.state + '/' + this.city + '.json');
-//  }
+
+ /* CheckWeather(SCform: NgForm): void {
+    console.log('http://api.wunderground.com/api/4bbbc25f4f5946dd/conditions/q/' + this.state + '/' + this.city + '.json');
+  }*/
 
 
   CheckWeather(value: any) {

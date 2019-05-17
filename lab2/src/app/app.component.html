@@ -16,15 +16,15 @@
     </div>
     <div class="panel-body">
       <div class="form-group">
-        <label>Username:</label>
-        <input type="text" #usernameR="ngModel" required class="form-control" name="username" ngModel>
+        <label>State:</label>
+        <input type="text" #state="ngModel" required class="form-control" name="state" ngModel>
         </div>
       </div>
     </div>
     <div class="panel primary-panel">
       <div class="form-group">
-        <label>Password:</label>
-        <input #passwordR="ngModel" required type="text" class="form-control" name="password" ngModel>
+        <label>City:</label>
+        <input #cityR="ngModel" required type="text" class="form-control" name="city" ngModel>
       </div>
     </div>
 
@@ -32,9 +32,9 @@
       <br>
       <button class="btn btn-primary"> Check</button>
     </div>
-  </div>
-</form>
 
+  </form>
+</div>
 <div *ngIf="hourlyData">
   <h4 align="center"> <Strong> Temperature </Strong> : {{ tempData1.current_observation.temperature_string | json }} </h4>
   <h4 align="center"> <Strong> Wind </Strong> : {{ tempData1.currecurrent_observation.wind_mph | json }} </h4>
@@ -42,7 +42,7 @@
   <h4 align="center"> <Strong> Pressure </Strong> : {{ tempData1.current_observation.pressure_mb | json }} </h4>
 </div>
 
-<table *ngIf="hourlyData" class="table" align="right">
+<table *ngIf="hourlyData" align="right" class="table">
   <thead>
   <tr style="color:red;">
     <th scope="h">Hour</th>
@@ -63,8 +63,6 @@
    </tbody>
   </table>
 <router-outlet></router-outlet>
-</div>
-
 
 </body>
 </html>
