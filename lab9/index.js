@@ -2,10 +2,10 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 
 var app = express();
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 app.use(cookieParser());
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Setting View Engine
 app.set('view engine', 'pug');
@@ -31,5 +31,5 @@ app.post('/user', function(req, res){
 
 //Listening to nodeJS Application
 app.listen(process.env.PORT || 3000, function(){
-   console.log("Listening to port 3000")
+   console.log("Listening to port 3000");
 });
