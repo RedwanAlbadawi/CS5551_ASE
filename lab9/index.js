@@ -14,6 +14,7 @@ app.set('view engine', 'pug');
 app.use(express.static('public'));
 
 //Default Route
+
 app.get('/', function(req, res){
    res.render('home');
 });
